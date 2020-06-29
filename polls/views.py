@@ -7,14 +7,22 @@ from .models import Choice, Question, Chart
 
 from django.utils import timezone
 
+from django.conf import settings
+import os
+
 class HomeView(generic.TemplateView):
     template_name = 'polls/index.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['message'] = Chart.objects.all() #'hahahaha' #Chart.objects.all()[:5]
-        context['chart'] = Chart.plot()
-        context['describe_df']= Chart.describeData('C:\\Users\\Alenquer\\it\\django\\apps\\data_science_idealista\\polls\\datasets\\df_idealista_bcn_pg_1_to_50.csv')
-        context['facets']= Chart.displayFacets('C:\\Users\\Alenquer\\it\\django\\apps\\data_science_idealista\\polls\\datasets\\df_idealista_bcn_pg_1_to_50.csv')
+        # context['message'] = Chart.objects.all() 
+        # context['chart'] = Chart.plot()
+        # context['describe_df']= Chart.describeData('C:\\Users\\Alenquer\\it\\django\\apps\\data_science_idealista\\polls\\datasets\\df_idealista_bcn_pg_1_to_50.csv')
+        #context['facets']= Chart.displayFacets('C:\\Users\\Alenquer\\it\\django\\apps\\data_science_idealista\\polls\\datasets\\df_idealista_bcn_pg_1_to_50.csv')
+        #context['facets']= Chart.displayFacets(os.path.join(settings.DATASET_DIRS, 'df_idealista_bcn_pg_1_to_50.csv'))
+        context['facets']= Chart.displayFacets(os.path.join(settings.DATASET_DIRS[0] + 
+                                                            '\df_idealista_bcn_pg_1_to_50.csv'
+                                                            )
+                                                )
         
         return context
 
