@@ -1,1 +1,1 @@
-web: gunicorn data_science_idealista.wsgi --log-file -
+web: gunicorn django_local_library.wsgi --log-file -
