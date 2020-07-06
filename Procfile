@@ -1,1 +1,1 @@
-web: python website/manage.py runserver 0.0.0.0:$PORT
+web: gunicorn data_science_idealista.wsgi --log-file -
