@@ -5,8 +5,8 @@
 *.sqlite3
 
 ### Django ###
-*.log
-*.pot
-*.pyc
-__pycache__/
-local_settings.py
+# *.log
+# *.pot
+# *.pyc
+# __pycache__/
+# local_settings.py
