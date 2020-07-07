@@ -19,11 +19,22 @@ class HomeView(generic.TemplateView):
         # context['describe_df']= Chart.describeData('C:\\Users\\Alenquer\\it\\django\\apps\\data_science_idealista\\polls\\datasets\\df_idealista_bcn_pg_1_to_50.csv')
         #context['facets']= Chart.displayFacets('C:\\Users\\Alenquer\\it\\django\\apps\\data_science_idealista\\polls\\datasets\\df_idealista_bcn_pg_1_to_50.csv')
         #context['facets']= Chart.displayFacets(os.path.join(settings.DATASET_DIRS, 'df_idealista_bcn_pg_1_to_50.csv'))
-        context['facets']= Chart.displayFacets(os.path.join(settings.DATASET_DIRS[0] + 
+        # context['facets']= Chart.displayFacets(os.path.join(settings.DATASET_DIRS[0] + 
+        #                                                     '\df_idealista_bcn_pg_1_to_50.csv'
+        #                                                     )
+        #                                         )
+        # context['facets']= Chart.displayFacets(os.path.join(settings.DATASET_DIRS[0] + 
+        #                                                     '\df_idealista_bcn_pg_1_to_50.csv'
+        #                                                     )
+        #                                         )
+        context['facets']= 'Chart.displayFacets(...)'
+
+        context['my_dataset_dir'] = os.path.join(settings.DATASET_DIRS[0] + 
                                                             '\df_idealista_bcn_pg_1_to_50.csv'
-                                                            )
-                                                )
+                                                            ) 
         
+        # os.path.join(SITE_ROOT, '..', 'static')
+
         return context
 
 class IndexView(generic.ListView):

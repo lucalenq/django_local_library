@@ -134,7 +134,10 @@ STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-#STATICFILES_DIRS = (
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
 DATASET_DIRS = (
     os.path.join(BASE_DIR,  'polls','static','polls', 'datasets'),
 )
