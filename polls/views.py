@@ -32,7 +32,7 @@ class HomeView(generic.TemplateView):
         #                                                     ) 
         #                                         )
         context['facets']= Chart.displayFacets(os.path.join(settings.STATICFILES_DIRS[0] + 
-                                                            '\df_idealista_bcn_pg_1_to_50.csv'
+                                                            '/df_idealista_bcn_pg_1_to_50.csv'
                                                             ) 
                                                 )
         
