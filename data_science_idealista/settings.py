@@ -140,6 +140,8 @@ STATIC_URL = '/static/'
 
 DATASET_DIRS = (
     os.path.join(BASE_DIR,  'polls','static','polls', 'datasets'),
+    # os.path.join(BASE_DIR,'static','polls', 'datasets'),
+    # os.path.join('../static/polls/datasets/'),
 )
 
 # Configure Django App for Heroku.
