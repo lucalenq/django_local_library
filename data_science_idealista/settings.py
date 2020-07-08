@@ -134,9 +134,10 @@ STATIC_URL = '/static/'
 
 
 
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'staticfiles'),
-# )
+STATICFILES_DIRS = (
+    './polls/static/polls/datasets',
+    # os.path.join(BASE_DIR, 'staticfiles'),
+)
 
 DATASET_DIRS = (
     os.path.join(BASE_DIR,  'polls','static','polls', 'datasets'),
