@@ -135,8 +135,11 @@ STATIC_URL = '/static/'
 
 
 STATICFILES_DIRS = (
-    './polls/static/polls/datasets',
-    # os.path.join(BASE_DIR, 'staticfiles'),
+    # os.path.join(STATIC_URL, 'polls/datasets'), 
+    # '~/static/polls/datasets',
+    # './polls/static/polls/datasets', It works locally!
+    'polls/static/polls/datasets',
+    
 )
 
 DATASET_DIRS = (
