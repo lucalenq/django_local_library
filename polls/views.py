@@ -24,13 +24,16 @@ class HomeView(generic.TemplateView):
         #                                                     )
         #                                         )
         # context['facets']= Chart.displayFacets(os.path.join(settings.DATASET_DIRS[0] + 
-        #                                                     '\df_idealista_bcn_pg_1_to_50.csv'
-        #                                                     )
+        #                                                     'df_idealista_bcn_pg_1_to_50.csv'
+        #                                                     ) 
         #                                         )
-        context['facets']= 'Chart.displayFacets(...)'
-
-        context['my_dataset_dir'] = os.path.join(settings.DATASET_DIRS[0] + 
+        context['facets']= Chart.displayFacets(os.path.join(settings.DATASET_DIRS[0] + 
                                                             '\df_idealista_bcn_pg_1_to_50.csv'
+                                                            ) 
+                                                )
+
+        context['my_dataset_dir'] = os.path.join(settings.DATASET_DIRS[0], 
+                                                            'df_idealista_bcn_pg_1_to_50.csv'
                                                             ) 
         
         # os.path.join(SITE_ROOT, '..', 'static')
