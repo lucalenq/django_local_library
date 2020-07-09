@@ -61,7 +61,7 @@ ROOT_URLCONF = 'data_science_idealista.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -132,21 +132,14 @@ MIDDLEWARE_CLASSES = (
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-
-
 STATICFILES_DIRS = (
-    # os.path.join(STATIC_URL, 'polls/datasets'), 
-    # '~/static/polls/datasets',
-    # './polls/static/polls/datasets', It works locally!
     'polls/static/polls/datasets',
     
 )
 
-DATASET_DIRS = (
-    os.path.join(BASE_DIR,  'polls','static','polls', 'datasets'),
-    # os.path.join(BASE_DIR,'static','polls', 'datasets'),
-    # os.path.join('../static/polls/datasets/'),
-)
+# DATASET_DIRS = (
+#     os.path.join(BASE_DIR,  'polls','static','polls', 'datasets'),
+# )
 
 # Configure Django App for Heroku.
 import django_heroku

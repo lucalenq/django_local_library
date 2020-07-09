@@ -16,21 +16,7 @@ class HomeView(generic.TemplateView):
         context = super().get_context_data(**kwargs)
         # context['message'] = Chart.objects.all() 
         # context['chart'] = Chart.plot()
-        # context['describe_df']= Chart.describeData('C:\\Users\\Alenquer\\it\\django\\apps\\data_science_idealista\\polls\\datasets\\df_idealista_bcn_pg_1_to_50.csv')
-        #context['facets']= Chart.displayFacets('C:\\Users\\Alenquer\\it\\django\\apps\\data_science_idealista\\polls\\datasets\\df_idealista_bcn_pg_1_to_50.csv')
-        #context['facets']= Chart.displayFacets(os.path.join(settings.DATASET_DIRS, 'df_idealista_bcn_pg_1_to_50.csv'))
-        # context['facets']= Chart.displayFacets(os.path.join(settings.DATASET_DIRS[0] + 
-        #                                                     '\df_idealista_bcn_pg_1_to_50.csv'
-        #                                                     )
-        #                                         )
-        # context['facets']= Chart.displayFacets(os.path.join(settings.DATASET_DIRS[0] + 
-        #                                                     'df_idealista_bcn_pg_1_to_50.csv'
-        #                                                     ) 
-        #                                         )
-        # context['facets']= Chart.displayFacets(os.path.join(settings.DATASET_DIRS[0] + 
-        #                                                     '\df_idealista_bcn_pg_1_to_50.csv'
-        #                                                     ) 
-        #                                         )
+        
         context['facets']= Chart.displayFacets(os.path.join(settings.STATICFILES_DIRS[0] + 
                                                             '/df_idealista_bcn_pg_1_to_50.csv'
                                                             ) 

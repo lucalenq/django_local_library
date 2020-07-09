@@ -10,6 +10,8 @@ from .models import Question, Chart
 from django.urls import reverse
 
 import os
+
+from django.conf import settings
 # Create your tests here.
 
 # def create_question(question_text, days):
@@ -131,22 +133,26 @@ import os
 class HomeTests(TestCase):
     def test_dataframe_produce_facets(self):
         """
-        The detail view of a question with a pub_date in the past
-        displays the question's text.
+        Test if a single csv file is generating facets.
         """
-        fileName = 'C:\\Users\\Alenquer\\it\\django\\apps\\data_science_idealista\\polls\\static\\polls\\datasets\\df_idealista_bcn_pg_1_to_50.csv'
-        output = Chart.displayFacets(fileName)
+
+        fileName = 'df_idealista_bcn_pg_1_to_50.csv'
+        output = Chart.displayFacets(os.path.join(  settings.STATICFILES_DIRS[0], 
+                                                    fileName
+                                                )
+                                    )
         self.assertIsNot(output,'')
             
 
 class DeployTests(TestCase):
+
     def test_if_procfile_is_ok_for_heroku(self):
+        """
+        The Procfile doesn't tell Heroku to run a web site for the application data_science_idealista.
+        """
         test = False
-        # procfile = open(os.path.join(settings.BASE_DIR, '/Procfile'),'r')
-        procfile = open(os.path.join('C:\\Users\\Alenquer\\it\\django\\git\\django_local_library', '\\Procfile'),'r')
-        # self.assertContains(procfile,'web: gunicorn data_science_idealista.wsgi --log-file -')
-        # procfile = open('C:\\Users\\Alenquer\\it\\django\\git\\django_local_library\\Procfile','r')
+        procfile = open('Procfile','r')
         if 'web: gunicorn data_science_idealista.wsgi --log-file -' in procfile.read():
             test = True
-        
+        procfile.close()
         self.assertIs(test,True)
