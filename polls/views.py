@@ -17,18 +17,19 @@ class HomeView(generic.TemplateView):
         # context['message'] = Chart.objects.all() 
         # context['chart'] = Chart.plot()
         
-        context['facets']= Chart.displayFacets(os.path.join(settings.STATICFILES_DIRS[0] + 
-                                                            '/df_idealista_bcn_pg_1_to_50.csv'
-                                                            ) 
-                                                )
-        
 
-        context['my_dataset_dir'] = os.path.join(settings.STATICFILES_DIRS[0], 
-                                                            'df_idealista_bcn_pg_1_to_50.csv'
-                                                            ) 
-        
-        # os.path.join(SITE_ROOT, '..', 'static')
+        context['facets']= Chart.displayFacets(['df_idealista_bcn_pg_1_to_50.csv',
+                                                'df_idealista_bcn_pg_51_to_100.csv',
+                                                'df_idealista_bcn_pg_101_to_150.csv',
+                                                'df_idealista_bcn_pg_151_to_200.csv',])
+        # context['facets']= Chart.displayFacets(os.path.join(settings.STATICFILES_DIRS[0] + 
+        #                                                     '/df_idealista_bcn_pg_1_to_50.csv'
+        #                                                     ) 
+        #                                         )
 
+        # context['my_dataset_dir'] = os.path.join(settings.STATICFILES_DIRS[0], 
+        #                                                     'df_idealista_bcn_pg_1_to_50.csv'
+        #                                                     )      
         return context
 
 class IndexView(generic.ListView):

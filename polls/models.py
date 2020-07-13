@@ -16,7 +16,11 @@ import base64
 #!pip install facets-overview==1.0.0
 from facets_overview.feature_statistics_generator import FeatureStatisticsGenerator
 
+from django.conf import settings
+# import django.settings
+import os
 
+from . import my_classes
 # Create your models here.
 
 class Question(models.Model):
@@ -91,19 +95,20 @@ class  Chart(models.Model):
             {'table': df, 'name': 'trainData'}]
         censusProto = fsg.ProtoFromDataFrames(dataframes)
         protostr = base64.b64encode(censusProto.SerializeToString()).decode("utf-8")
-        # HTML_TEMPLATE = """<script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.3.3/webcomponents-lite.js"></script>
-        #   <link rel="import" href="https://raw.githubusercontent.com/PAIR-code/facets/1.0.0/facets-dist/facets-jupyter.html">
-        #   <facets-overview id="elem"></facets-overview>
-        #   <script>
-        #     document.querySelector("#elem").protoInput = "{protostr}";
-        #   </script>"""
-        # html = HTML_TEMPLATE.format(protostr=protostr)
       
         return protostr
             
+    # @staticmethod    
+    # def displayFacets(fileName):
+    #     df_1 = pd.DataFrame()
+    #     df_1 = pd.read_csv(fileName,float_precision=4)
+    #     str = Chart.generateStats(df_1)
+    #     return str
+    
     @staticmethod    
-    def displayFacets(fileName):
-        df_1 = pd.DataFrame()
-        df_1 = pd.read_csv(fileName,float_precision=4)
-        str = Chart.generateStats(df_1)
+    def displayFacets(lstfiles):
+        df_work = my_classes.DataTool.concatDataFrame(lstfiles)
+        str = Chart.generateStats(df_work)
         return str
+
+              
