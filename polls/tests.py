@@ -12,6 +12,9 @@ from django.urls import reverse
 import os
 
 from django.conf import settings
+
+from .my_classes import DataTool
+
 # Create your tests here.
 
 # def create_question(question_text, days):
@@ -131,19 +134,38 @@ from django.conf import settings
 #             self.assertContains(response, past_question.question_text)
     
 class HomeTests(TestCase):
-    def test_dataframe_produce_facets(self):
+    def test_one_dataframe_produce_facets(self):
         """
-        Test if a single csv file is generating facets.
+        Test if a single csv file becomes a dataframe then it generates facets.
         """
 
-        fileName = 'df_idealista_bcn_pg_1_to_50.csv'
-        output = Chart.displayFacets(os.path.join(  settings.STATICFILES_DIRS[0], 
-                                                    fileName
-                                                )
-                                    )
+        fileName = ['df_idealista_bcn_pg_1_to_50.csv']
+        
+        # self.assertIsNot(output,'')       
+        # output = Chart.displayFacets(os.path.join(  settings.STATICFILES_DIRS[0], 
+        #                                             fileName
+        #                                         )
+        #                             )
+        output = Chart.displayFacets(fileName)
         self.assertIsNot(output,'')
-            
 
+    def test_multiple_dataframes_produce_facets(self):
+        """
+        Test if multiple csv files become a dataframe then it generates facets.
+        """
+
+        lstfileNames = ['df_idealista_bcn_pg_1_to_50.csv',
+                        'df_idealista_bcn_pg_51_to_100.csv',]
+        
+       
+        # output = Chart.displayFacet(os.path.join(  settings.STATICFILES_DIRS[0], 
+        #                                             lstfileNames
+        #                                         )
+        #                             )
+
+        output = Chart.displayFacets(lstfileNames)
+        self.assertIsNot(output,'')       
+ 
 class DeployTests(TestCase):
 
     def test_if_procfile_is_ok_for_heroku(self):
